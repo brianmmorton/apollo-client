@@ -1096,6 +1096,10 @@ export class QueryManager<TStore> {
     default: case "cache-first": {
       const diff = readCache();
 
+      if (!diff.missing) {
+        console.log(diff.missing);
+      }
+
       if (diff.complete) {
         return [
           resultsFromCache(diff, queryInfo.markReady()),
